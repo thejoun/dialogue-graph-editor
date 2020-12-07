@@ -17,15 +17,4 @@ public class Response
 
     // The name of the function this response will trigger.
     public string Trigger { get; set; } = default;
-
-
-    public override string ToString()
-    {
-        var sb = new StringBuilder();
-        sb.Append($"DIALOG RESPONSE");
-        sb.Append($"Text: {Text}");
-        sb.Append($"NextId: {NextId}");
-        sb.Append($"Trigger: {Trigger}");
-        return sb.ToString();
-    }
 }

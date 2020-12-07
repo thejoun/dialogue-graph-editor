@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.Linq;
+using System;
 
-public class DialogEditorWindow : EditorWindow
+public class DialogGraphEditorWindow : EditorWindow
 {
     // constants
     private const int START_NODE_INDEX = 0;
-    
+
     private readonly Dimensions SENTENCE_NODE_DIM = new Dimensions(130, 60);
-    private readonly Dimensions RESPONSE_NODE_DIM = new Dimensions(70, 40);
+    private readonly Dimensions RESPONSE_NODE_DIM = new Dimensions(90, 40);
 
     private readonly Dimensions BUTTON_DIM = new Dimensions(50, 28);
 
     private const int TOP_PANEL_HEIGHT = 50;
-    private const int BOTTOM_PANEL_HEIGHT = 100;
-    private const int RIGHT_PANEL_WIDTH = 150;
+    private const int BOTTOM_PANEL_HEIGHT = 50;
 
     private const int BOX_PADDING = 0;
 
@@ -34,12 +34,11 @@ public class DialogEditorWindow : EditorWindow
     private Conversation Conversation => _selectedConversation;
 
 
-    private List<SentenceNode> Nodes => Conversation.Nodes;
+    private List<SentenceNode> SentenceNodes => Conversation.Nodes;
 
 
     private int _selectedNodeIndex = -1;
-    private SentenceNode SelectedNode => (_selectedNodeIndex >= Nodes?.Count || _selectedNodeIndex < 0) ? null : Nodes[_selectedNodeIndex];
-
+    private SentenceNode SelectedNode => (_selectedNodeIndex >= SentenceNodes?.Count || _selectedNodeIndex < 0) ? null : SentenceNodes[_selectedNodeIndex];
 
     //private string currentSentence = "";
     //private List<Response> currentResponses;
@@ -73,94 +72,97 @@ public class DialogEditorWindow : EditorWindow
     private Vector2 _scrollPosition = new Vector2(0, 0);
 
 
-    [MenuItem("Window/Dialog Editor")]
+    [MenuItem("Window/Dialog Editor/Graph Editor")]
     public static void ShowWindow()
     {
-        var w = GetWindow(typeof(DialogEditorWindow));
-        w.titleContent = new GUIContent("Dialog Editor");
+        var w = GetWindow(typeof(DialogGraphEditorWindow));
+        w.titleContent = new GUIContent("Dialog Graph Editor");
     }
 
 
     private void OnGUI()
     {
-        // STYLES
-
-        //PrepareStyles();
-
         // TITLE
 
         //GUILayout.Label("DIALOG EDITOR", EditorStyles.boldLabel);
 
-        if (_selectedConversation == null)
+        using (var whole = new EditorGUILayout.VerticalScope())
         {
-            GUILayout.Label($"Select a Conversation object to begin", EditorStyles.centeredGreyMiniLabel);
-            return;
+            using (var topPanel = new EditorGUILayout.HorizontalScope())
+            {
+                if (_selectedConversation == null)
+                {
+                    EditorGUILayout.LabelField($"Select a Conversation object");
+                    return;
+                }
+                else
+                {
+                    EditorGUILayout.LabelField($"{_selectedConversation.name}", titleLabelStyle);
+                }
+
+                // ADD NODE BUTTON
+
+                if (GUI.Button(AddNodeButtonRect, "+", addNodeButtonStyle))
+                {
+                    SentenceNodes.Add(new SentenceNode() { Rect = NewNodeRect, Sentence = new Sentence() { Text = "Write the dialog text here." } });
+                }
+
+                // DELETE NODE BUTTON
+
+                if (SelectedNode != null && !SelectedNode.Sentence.Type.Equals(Sentence.SentenceType.Start))
+                {
+                    if (GUI.Button(DeleteNodeButtonRect, "-", deleteNodeButtonStyle))
+                    {
+                        RemoveNode(SelectedNode);
+                    }
+                }
+            }
         }
-        else
-        {
-            GUILayout.Label($"{_selectedConversation.name}", titleLabelStyle);
-        }
+
+
 
         // BOX
 
         EditorGUI.DrawRect(BoxRect, BOX_COLOR);
 
-        // NEW NODE BUTTON
-
-        if (GUI.Button(AddNodeButtonRect, "+", addNodeButtonStyle))
-        {
-           Nodes.Add(new SentenceNode() { Rect = NewNodeRect, Text = "Write the dialog text here." });
-        }
-
-        // DELETE NODE BUTTON
-
-        if (SelectedNode != null && !SelectedNode.Type.Equals(SentenceNode.NodeType.Start))
-        {
-            if (GUI.Button(DeleteNodeButtonRect, "-", deleteNodeButtonStyle))
-            {
-                RemoveNode(SelectedNode);
-            }
-        }
-
-        // START NODE, END NODE
-
-        if (Nodes.Count < 1)
-        {
-            Nodes.Clear();
-            Nodes.Add(new SentenceNode() { Rect = NewNodeRect, Text = "Start Node", Type = SentenceNode.NodeType.Start });
-        }
-
         // NODES
 
         BeginWindows();
 
+        if (SentenceNodes.Count < 1)
+        {
+            SentenceNodes.Clear();
+            SentenceNodes.Add(new SentenceNode() { Id = 0, Rect = NewNodeRect, Sentence = new Sentence() { Text = "Start Node", Type = Sentence.SentenceType.Start } });
+        }
+
         int i = -1;
         int index = 1;
 
-        foreach (SentenceNode node in Nodes)
+        foreach (SentenceNode node in SentenceNodes)
         {
             i++;
 
-            // create node
+            Sentence sentence = node.Sentence;
 
-            int cutLength = 20;
-            string cutText = node.Text;
-            if(node.Text.Length > cutLength)
-                cutText = node.Text.Substring(0, cutLength - 2) + "...";
+            string cutText = DialogHelper.Cut(node.Sentence.Text, 18);
 
-            string actor = node.Content.Actor;
+            string actor = string.Empty;
+            if (sentence.Actor != null)
+                actor = DialogHelper.Cut(sentence.Actor.Title, 18);
 
-            if (node.Type == SentenceNode.NodeType.Start)
+            if (sentence.Type == Sentence.SentenceType.Start)
             {
-                node.Rect = GUI.Window(i, node.Rect, SentenceNodeWindow, $"START", startNodeStyle);
+                node.Rect = GUI.Window(i, node.Rect, SentenceNodeWindow, $"{actor}\n{cutText}", startNodeStyle);
+                index++;
             }
-            else if(node.Type == SentenceNode.NodeType.End)
+            else if (sentence.Type == Sentence.SentenceType.End)
             {
                 node.Rect = GUI.Window(i, node.Rect, SentenceNodeWindow, $"END", endNodeStyle);
+                index++;
             }
             else
             {
-                node.Rect = GUI.Window(i, node.Rect, SentenceNodeWindow, $"Node {index} \n{actor} \n{cutText}", sentenceNodeStyle);
+                node.Rect = GUI.Window(i, node.Rect, SentenceNodeWindow, $"{actor}\n{cutText}", sentenceNodeStyle);
                 index++;
             }
 
@@ -168,14 +170,14 @@ public class DialogEditorWindow : EditorWindow
 
             if (node.Rect.Contains(Event.current.mousePosition))
             {
-                if(Event.current.type == EventType.ContextClick)
+                if (Event.current.type == EventType.ContextClick)
                 {
                     if (_draggingNodeLink)
                     {
-                        if(!node.Content.Responses.Exists(r => r.NextId == i))
+                        if (!node.Sentence.Responses.Exists(r => r.NextId == i))
                         {
                             Response response = new Response() { Text = "Write the response text here.", NextId = i };
-                            Nodes[_draggingFromIndex].Content.Responses.Add(response);
+                            SentenceNodes[_draggingFromIndex].Sentence.Responses.Add(response);
                         }
                         _draggingNodeLink = false;
                     }
@@ -186,22 +188,36 @@ public class DialogEditorWindow : EditorWindow
                     }
                     Event.current.Use();
                 }
-                else if(Event.current.type == EventType.Layout)
+                else if (Event.current.type == EventType.Layout)
                 {
+                    // select this node
+
                     _selectedNodeIndex = i;
+
+                    DialogInspectorWindow.Instance.SetNode(SelectedNode);
+
                 }
             }
 
-            // draw arrows
+            // RESPONSES
 
             Handles.color = ARROW_COLOR;
             Vector3 currentPos = node.Rect.center;
-            foreach(Response response in node.Content.Responses)
+
+            int rindex = -1;
+
+            foreach (Response response in node.Sentence.Responses)
             {
-                Vector3 targetPos = Nodes[response.NextId].Rect.center;
+                rindex++;
+
+                // LINE
+
+                Vector3 targetPos = SentenceNodes[response.NextId].Rect.center;
 
                 Handles.color = LINE_COLOR;
                 Handles.DrawLine(currentPos, targetPos);
+
+                // ARROW
 
                 Vector3 dirVector = targetPos - currentPos;
                 Vector3 dirUnitVector = dirVector.normalized;
@@ -210,7 +226,7 @@ public class DialogEditorWindow : EditorWindow
                 Vector3 triangleHeight = dirUnitVector * ARROW_HEAD_SIZE;
 
                 //Vector3 arrowPos = 0.5f * targetPos + 0.5f * currentPos;
-                Vector3 arrowPos = currentPos + dirVector - dirUnitVector * 80f;
+                Vector3 arrowPos = currentPos + (dirVector * 0.75f);
 
                 Vector3 triangleBase = new Vector2(arrowPos.x - triangleHeight.x, arrowPos.y - triangleHeight.y);
                 Vector3[] vertices = {
@@ -220,6 +236,15 @@ public class DialogEditorWindow : EditorWindow
                 };
                 Handles.color = ARROW_COLOR;
                 Handles.DrawAAConvexPolygon(vertices);
+
+                // RECT
+
+                Vector2 rectPos = currentPos + (dirVector * 0.5f);
+                rectPos -= RESPONSE_NODE_DIM / 2;
+                Rect responseRect = new Rect(rectPos, RESPONSE_NODE_DIM);
+                string rCutText = DialogHelper.Cut(response.Text, 14);
+                //GUI.Window(rindex, responseRect, ResponseNodeWindow, $"Response {rindex} \n{rCutText}", responseNodeStyle);
+                GUI.Box(responseRect, $"{rCutText}", responseNodeStyle);
             }
         }
 
@@ -230,7 +255,7 @@ public class DialogEditorWindow : EditorWindow
         if (_draggingNodeLink)
         {
             Vector2 mousePos = Event.current.mousePosition;
-            Rect nodeRect = Nodes[_draggingFromIndex].Rect;
+            Rect nodeRect = SentenceNodes[_draggingFromIndex].Rect;
             Handles.color = LINE_COLOR;
             //Handles.DrawLine(new Vector3(mousePos.x, mousePos.y, 0), new Vector3(nodePos.x + NODE_WIDTH / 2, nodePos.y + NODE_HEIGHT / 2, 0));
             Handles.DrawLine(nodeRect.center, mousePos);
@@ -247,27 +272,20 @@ public class DialogEditorWindow : EditorWindow
 
         // If a node is selected in the graph, display its contents at the bottom of the gui window.
 
-        DisplayNodeInfo(SelectedNode);
+        //DisplaySentenceInfo(SelectedNode);
 
 
         // Label to say which node is currently highlighted in the dialog graph
 
+        /*
         GUI.Label(new Rect(660, position.height * 0.86f, 100, 70), "Selected Node:");
         GUI.Label(new Rect(660, position.height * 0.89f, 100, 70), _selectedNodeIndex == -1 ? "No node selected." : _selectedNodeIndex == 0 ? "Start Node" : _selectedNodeIndex == 1 ? "End Node" : "Node " + (_selectedNodeIndex - 1));
-
-        // Save the updated dialog graph:
-
-        /*
-        if (_selectedConversation != null)
-        {
-            _selectedConversation.Nodes = Nodes;
-        }
         */
     }
 
 
     private void SentenceNodeWindow(int id)
-    {  
+    {
         GUI.DragWindow();    // Enables drag and drop functionality of nodes.
     }
 
@@ -276,21 +294,15 @@ public class DialogEditorWindow : EditorWindow
         
     }
 
-    // Displays information about the selected node
-    private void DisplayNodeInfo(SentenceNode node)
+
+    private void DisplaySentenceInfo(SentenceNode node)
     {
         if (node == null)
-        {
             return;
-        }
 
-        var responses = node.Content.Responses;
+        var sentence = node.Sentence;
 
-        // TEXT
-
-        //GUI.Label(new Rect(20, position.height * 0.83f, 200, 30), "Edit the selected node's content:");
-
-        node.Content.Text = GUI.TextArea(new Rect(20, position.height * 0.86f, 150, 70), node.Content.Text);
+        
 
         // RESPONSES
 
@@ -301,7 +313,7 @@ public class DialogEditorWindow : EditorWindow
         }
         */
 
-        int responsesCount = responses.Count;
+        //int responsesCount = responses.Count;
 
         /*
         _scrollPosition = GUI.BeginScrollView(new Rect(220, position.height * 0.83f, 400, 100), _scrollPosition, new Rect(0, 0, responsesCount * 175, 80));
@@ -350,20 +362,20 @@ public class DialogEditorWindow : EditorWindow
         */
 
         DeselectNode();
-        foreach(SentenceNode n in Nodes)
+        foreach (SentenceNode n in SentenceNodes)
         {
-            foreach(Response r in n.Content.Responses)
+            foreach (Response r in n.Sentence.Responses)
             {
-                if (node.Equals(Nodes[r.NextId]))
+                if (node.Equals(SentenceNodes[r.NextId]))
                 {
-                    n.Content.Responses.Remove(r);
+                    n.Sentence.Responses.Remove(r);
                 }
             }
         }
-        Nodes.Remove(node);
+        SentenceNodes.Remove(node);
     }
 
-    
+
     private void DeselectNode()
     {
         _selectedNodeIndex = -1;
@@ -372,7 +384,7 @@ public class DialogEditorWindow : EditorWindow
 
     private void Save(Conversation conversation)
     {
-
+        
     }
 
     private void Load(Conversation conversation)
@@ -413,7 +425,7 @@ public class DialogEditorWindow : EditorWindow
         {
             for (int x = 0; x < SENTENCE_NODE_DIM.X; x++)
             {
-                if(x < padding || y < padding || x > SENTENCE_NODE_DIM.X - padding || y > SENTENCE_NODE_DIM.Y - padding)
+                if (x < padding || y < padding || x > SENTENCE_NODE_DIM.X - padding || y > SENTENCE_NODE_DIM.Y - padding)
                 {
                     redNodeTexture.SetPixel(x, y, new Color(1f / 100, 0, 0) * (60 + (0.6f * y)));
                     greenNodeTexture.SetPixel(x, y, new Color(0, 1f / 100, 0) * (60 + (0.6f * y)));
@@ -425,7 +437,7 @@ public class DialogEditorWindow : EditorWindow
                     greenNodeTexture.SetPixel(x, y, new Color(1f / 100, 1f / 100, 1f / 100) * (10 + (0.4f * y)));
                     greyNodeTexture.SetPixel(x, y, new Color(1f / 100, 1f / 100, 1f / 100) * (10 + (0.4f * y)));
                 }
-                
+
             }
         }
         redNodeTexture.Apply();
@@ -471,11 +483,11 @@ public class DialogEditorWindow : EditorWindow
         responseNodeStyle.normal.background = greyNodeTexture;
 
         startNodeStyle = new GUIStyle(nodeStyle);
-        startNodeStyle.fontStyle = FontStyle.Bold;
+        //startNodeStyle.fontStyle = FontStyle.Bold;
         startNodeStyle.normal.background = greenNodeTexture;
 
         endNodeStyle = new GUIStyle(nodeStyle);
-        endNodeStyle.fontStyle = FontStyle.Bold;
+        //endNodeStyle.fontStyle = FontStyle.Bold;
         endNodeStyle.normal.background = redNodeTexture;
     }
 }

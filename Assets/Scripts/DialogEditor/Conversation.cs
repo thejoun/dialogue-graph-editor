@@ -33,7 +33,7 @@ public class Conversation : MonoBehaviour
         get
         {
             var nodes = new List<Sentence>();
-            _nodes.ForEach(g => nodes.Add(g.Content));
+            _nodes.ForEach(g => nodes.Add(g.Sentence));
             return nodes;
         }
     }
