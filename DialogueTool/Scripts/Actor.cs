@@ -4,7 +4,8 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class Actor : MonoBehaviour
+[CreateAssetMenu(fileName = "Actor", menuName = "Actor", order = 1)]
+public class Actor : ScriptableObject
 {
     [SerializeField]
     private string _title;

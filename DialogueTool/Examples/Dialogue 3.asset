@@ -1,0 +1,167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c952573cfa2c21c4bb32cad1c78e07e4, type: 3}
+  m_Name: Dialogue 3
+  m_EditorClassIdentifier: 
+  _title: Talk with Margrethe
+  _defaultActor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
+  _id: 0
+  _sentenceNodes:
+  - _deletedFlag: 0
+    _sentence:
+      _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
+      _text: Hello!
+      _type: 1
+      _responses:
+      - _text: Hi!
+        _nextId: 1
+        _triggers: 
+        _requisites: 
+    _rect:
+      serializedVersion: 2
+      x: 43.00003
+      y: 95.00002
+      width: 130
+      height: 59.99998
+    _id: 0
+  - _deletedFlag: 0
+    _sentence:
+      _actor: {fileID: 0}
+      _text: Have you seen my cat?
+      _type: 0
+      _responses:
+      - _text: No, I don't think so.
+        _nextId: 2
+        _triggers: 
+        _requisites: 
+      - _text: Hmm... not sure.
+        _nextId: 3
+        _triggers: 
+        _requisites: 
+      - _text: Yeah, I think I saw her just outside.
+        _nextId: 4
+        _triggers: 
+        _requisites: 
+    _rect:
+      serializedVersion: 2
+      x: 42.99996
+      y: 234.99995
+      width: 130
+      height: 59.99998
+    _id: 1
+  - _deletedFlag: 0
+    _sentence:
+      _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
+      _text: She's so good at hiding. Well, bye for now.
+      _type: 0
+      _responses:
+      - _text: Yeah, bye!
+        _nextId: 8
+        _triggers: 
+        _requisites: 
+    _rect:
+      serializedVersion: 2
+      x: 373.00003
+      y: 114.00003
+      width: 130
+      height: 59.99998
+    _id: 2
+  - _deletedFlag: 0
+    _sentence:
+      _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
+      _text: What do you mean, not sure?
+      _type: 0
+      _responses:
+      - _text: 
+        _nextId: 6
+        _triggers: 
+        _requisites: 
+    _rect:
+      serializedVersion: 2
+      x: 355.00003
+      y: 249.99994
+      width: 130
+      height: 59.99998
+    _id: 3
+  - _deletedFlag: 0
+    _sentence:
+      _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
+      _text: Really? I've been looking for her since we arrived!
+      _type: 0
+      _responses:
+      - _text: 
+        _nextId: 5
+        _triggers: 
+        _requisites: 
+    _rect:
+      serializedVersion: 2
+      x: 306
+      y: 393.99973
+      width: 130
+      height: 59.99998
+    _id: 4
+  - _deletedFlag: 0
+    _sentence:
+      _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
+      _text: Thank you. I'll go look for her now now.
+      _type: 0
+      _responses: []
+    _rect:
+      serializedVersion: 2
+      x: 514.99976
+      y: 438.9999
+      width: 130
+      height: 59.99998
+    _id: 5
+  - _deletedFlag: 0
+    _sentence:
+      _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
+      _text: Nevermind... I'll go look for her...
+      _type: 0
+      _responses:
+      - _text: I'm sure you'll find her!
+        _nextId: 7
+        _triggers: 
+        _requisites: 
+    _rect:
+      serializedVersion: 2
+      x: 547.99994
+      y: 262
+      width: 130
+      height: 59.99998
+    _id: 6
+  - _deletedFlag: 0
+    _sentence:
+      _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
+      _text: I do hope so.
+      _type: 0
+      _responses: []
+    _rect:
+      serializedVersion: 2
+      x: 839
+      y: 279.99994
+      width: 130
+      height: 59.99998
+    _id: 7
+  - _deletedFlag: 0
+    _sentence:
+      _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
+      _text: 
+      _type: 2
+      _responses: []
+    _rect:
+      serializedVersion: 2
+      x: 689.99994
+      y: 85.99984
+      width: 130
+      height: 59.99998
+    _id: 8
