@@ -1,4 +1,4 @@
-# Dialogue Tool
+# Dialogue Tool for Unity
 
 ![Screen 1](https://github.com/TheJonu/Dialogue-Tool/blob/main/Screens/screen1.PNG "How it looks in Unity")
 
