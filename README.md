@@ -1,35 +1,30 @@
-# Dialogue Tool for Unity
+# Dialogue System for Unity
 
-![Screen 1](https://github.com/TheJonu/Dialogue-Tool/blob/main/Screens/screen1.PNG "How it looks in Unity")
+It's a framework for edition and display of dialogues inside Unity.\
 
-### What is it
+![Editor](https://github.com/TheJonu/Dialogue-Tool/blob/main/img/screen1.PNG "Editor")
 
-It's a tool for visual edition of *Dialogue* graphs inside Unity.\
-Useful in any project which involves conversations between characters.\
-Feel free to use it in any way you want.
+![Display](https://github.com/TheJonu/Dialogue-Tool/blob/main/img/screen1.PNG "Display")
 
-### How does it work
+### Description
 
-*Dialogues* represent conversations between any number of characters.\
-A *Dialogue* consists of several *Sentences* - each represented by a node in the graph.\
-Nodes can be connected by *Responses*. Each node can have several of them.\
-Each sentence is spoken by an *Actor*, which represents an in-game character.\
-*Dialogues* and *Actors* are ScriptableObjects, which means that you can easily move them between projects.
+A *Dialogue* is a conversation between any number of *Actors*.\
+It consists of a graph of *Sentences* connected to each other by *Responses*.\
+*Dialogues* and *Actors* can be easily moved between projects and are not scene-dependent.\
 
-### How to install
+### Installation
 
-Simply download and drop the contents of the *Assets* folder into your project assets.
+Either download and import *DialogueSystem.unitypackage* into your project or directly drop the *DialogueSystem* folder into your *Assets*.
 
-### What's inside
+### Content
 
-- *Graph Editor* (*GE*) - editor window which shows the dialogue graph
-- *Node Inspoector* (*NI*) - editor window which shows the contents of a node
-- custom inspector for *Dialogue* assets
-- premade *Dialogues* in the Examples folder
+- data framework
+- view framework
+- *Graph Editor* tool
+- *Node Editor* tool
+- example dialogue and assets
 
-The editor windows can be accessed from *Tools* > *Dialogue Tool*.
-
-### Where to start
+### Where to begin
 
 - create a *Dialogue* asset (*RMB > Create > Dialogue*)
 - open it
