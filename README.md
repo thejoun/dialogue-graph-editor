@@ -2,9 +2,10 @@
 
 It's a framework for edition and display of dialogues inside Unity.
 
-![Editor](https://github.com/TheJonu/Dialogue-Tool/blob/main/img/screen1.PNG "Editor")
+<img src="https://github.com/TheJonu/Dialogue-Tool/blob/main/img/screen_1.PNG">
 
-![Display](https://github.com/TheJonu/Dialogue-Tool/blob/main/img/screen1.PNG "Display")
+
+<img src="https://github.com/TheJonu/Dialogue-Tool/blob/main/img/screen_1.PNG" width="70%">
 
 ### Description
 
