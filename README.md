@@ -25,14 +25,8 @@ Either download and import *DialogueSystem.unitypackage* into your project or di
 
 ### Where to begin
 
-- create a *Dialogue* asset (*RMB > Create > Dialogue*)
-- open it
-- click *Edit*
-
-Two windows (*Graph Editor* and *Node Inspector*) will pop out.\
-When *GE* is open, it will automatically show the currently selected *Dialogue* asset.\
-*NI* shows the contents of a node selected in *GE*.\
-To create an *Actor*, go to *RMB > Create > Actor*
+- create a *Dialogue* (*RMB > Create > DialogueSystem > Dialogue*)
+- create an *Actor* (*RMB > Create > DialogueSystem > Actor*)
 
 ### How to use the *Graph Editor*
 
