@@ -1,6 +1,6 @@
 # Dialogue System for Unity
 
-It's a framework for edition and display of dialogues inside Unity.\
+It's a framework for edition and display of dialogues inside Unity.
 
 ![Editor](https://github.com/TheJonu/Dialogue-Tool/blob/main/img/screen1.PNG "Editor")
 
@@ -10,7 +10,7 @@ It's a framework for edition and display of dialogues inside Unity.\
 
 A *Dialogue* is a conversation between any number of *Actors*.\
 It consists of a graph of *Sentences* connected to each other by *Responses*.\
-*Dialogues* and *Actors* can be easily moved between projects and are not scene-dependent.\
+*Dialogues* and *Actors* can be easily moved between projects and are not scene-dependent.
 
 ### Installation
 
@@ -18,8 +18,7 @@ Either download and import *DialogueSystem.unitypackage* into your project or di
 
 ### Content
 
-- data framework
-- view framework
+- Framework (data and view)
 - *Graph Editor* tool
 - *Node Editor* tool
 - example dialogue and assets
@@ -32,7 +31,7 @@ Either download and import *DialogueSystem.unitypackage* into your project or di
 
 Two windows (*Graph Editor* and *Node Inspector*) will pop out.\
 When *GE* is open, it will automatically show the currently selected *Dialogue* asset.\
-*NI* shows the contents of a node selected in *GE*.
+*NI* shows the contents of a node selected in *GE*.\
 To create an *Actor*, go to *RMB > Create > Actor*
 
 ### How to use the *Graph Editor*
