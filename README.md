@@ -4,8 +4,7 @@ It's a framework for edition and display of dialogues inside Unity.
 
 <img src="https://github.com/TheJonu/Dialogue-Tool/blob/main/img/screen_1.PNG">
 
-
-<img src="https://github.com/TheJonu/Dialogue-Tool/blob/main/img/screen_1.PNG" width="70%">
+<img src="https://github.com/TheJonu/Dialogue-Tool/blob/main/img/screen_2.PNG" width="70%" align="center">
 
 ### Description
 
