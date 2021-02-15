@@ -5,11 +5,14 @@ using System.Linq;
 
 namespace DialogueSystem
 {
+    /// <summary>
+    /// Custom dialogue graph editor window
+    /// </summary>
     public class GraphEditorWindow : EditorWindow
     {
-        private readonly Dimensions SENTENCE_NODE_DIM = new Dimensions(130, 60);
-        private readonly Dimensions RESPONSE_NODE_DIM = new Dimensions(100, 40);
-        private readonly Dimensions BUTTON_DIM = new Dimensions(50, 30);
+        private readonly Vector2Int SENTENCE_NODE_DIM = new Vector2Int(130, 60);
+        private readonly Vector2Int RESPONSE_NODE_DIM = new Vector2Int(100, 40);
+        private readonly Vector2Int BUTTON_DIM = new Vector2Int(50, 30);
 
         private readonly Vector2 ADD_BUTTON_POS = new Vector2(15, 10);
         private readonly Vector2 DELETE_BUTTON_POS = new Vector2(80, 10);
@@ -59,7 +62,7 @@ namespace DialogueSystem
 
 
         private Dialogue Dialogue { get; set; } = null;                 // current open dialogue
-        private List<Node> Nodes => Dialogue.SentenceNodes;             // get all nodes
+        private List<Node> Nodes => Dialogue.Nodes;             // get all nodes
         private Node SelectedNode { get; set; } = null;                 // currently selected node
 
 
@@ -178,11 +181,11 @@ namespace DialogueSystem
                 node.Position = Pan;
 
                 // draw windows based on node type
-                if (sentence.Type == Sentence.SentenceType.Start)
+                if (sentence.Type == Sentence.Variant.Start)
                 {
                     node.WindowRect = GUI.Window(node.Id, node.WindowRect, MakeNode, new GUIContent($"{actor}\n{cutText}"), startNodeStyle);
                 }
-                else if (sentence.Type == Sentence.SentenceType.End)
+                else if (sentence.Type == Sentence.Variant.End)
                 {
                     node.WindowRect = GUI.Window(node.Id, node.WindowRect, MakeNode, $"END", endNodeStyle);
                 }
@@ -209,7 +212,7 @@ namespace DialogueSystem
                             IsConnecting = false;
                         }
                         // if not connecting, start connecting
-                        else if (!node.Sentence.Type.Equals(Sentence.SentenceType.End))
+                        else if (!node.Sentence.Type.Equals(Sentence.Variant.End))
                         {
                             ConnectingFrom = node;
                             IsConnecting = true;
@@ -407,7 +410,7 @@ namespace DialogueSystem
                 sentences[i].Sentence.Responses.Remove(responses[i]);
             }
 
-            // desel;ect the node
+            // deselect the node
             DeselectNode();
 
             // delete (soft if node is not at the end of the list)
@@ -444,14 +447,14 @@ namespace DialogueSystem
         // Prepares textures and styles for the GUI
         private void PrepareStyles()
         {
-            var endNodeTexture = new Texture2D(SENTENCE_NODE_DIM.X, SENTENCE_NODE_DIM.Y);
-            var startNodeTexture = new Texture2D(SENTENCE_NODE_DIM.X, SENTENCE_NODE_DIM.Y);
-            var defaultNodeTexture = new Texture2D(SENTENCE_NODE_DIM.X, SENTENCE_NODE_DIM.Y);
-            for (int y = 0; y < SENTENCE_NODE_DIM.Y; y++)
+            var endNodeTexture = new Texture2D(SENTENCE_NODE_DIM.x, SENTENCE_NODE_DIM.y);
+            var startNodeTexture = new Texture2D(SENTENCE_NODE_DIM.x, SENTENCE_NODE_DIM.y);
+            var defaultNodeTexture = new Texture2D(SENTENCE_NODE_DIM.x, SENTENCE_NODE_DIM.y);
+            for (int y = 0; y < SENTENCE_NODE_DIM.y; y++)
             {
-                for (int x = 0; x < SENTENCE_NODE_DIM.X; x++)
+                for (int x = 0; x < SENTENCE_NODE_DIM.x; x++)
                 {
-                    if (x < TEXTURE_COLOR_PADDING || y < TEXTURE_COLOR_PADDING || x > SENTENCE_NODE_DIM.X - TEXTURE_COLOR_PADDING || y > SENTENCE_NODE_DIM.Y - TEXTURE_COLOR_PADDING)
+                    if (x < TEXTURE_COLOR_PADDING || y < TEXTURE_COLOR_PADDING || x > SENTENCE_NODE_DIM.x - TEXTURE_COLOR_PADDING || y > SENTENCE_NODE_DIM.y - TEXTURE_COLOR_PADDING)
                     {
                         defaultNodeTexture.SetPixel(x, y, new Color(1f / 100, 1f / 100, 1f / 100) * (50 + 0.6f * y));
                         startNodeTexture.SetPixel(x, y, new Color(0, 1f / 100, 0) * (50 + 0.6f * y));
@@ -470,12 +473,12 @@ namespace DialogueSystem
             startNodeTexture.Apply();
             defaultNodeTexture.Apply();
 
-            var responseNodeTexture = new Texture2D(RESPONSE_NODE_DIM.X, RESPONSE_NODE_DIM.Y);
-            for (int y = 0; y < RESPONSE_NODE_DIM.Y; y++)
+            var responseNodeTexture = new Texture2D(RESPONSE_NODE_DIM.x, RESPONSE_NODE_DIM.y);
+            for (int y = 0; y < RESPONSE_NODE_DIM.y; y++)
             {
-                for (int x = 0; x < RESPONSE_NODE_DIM.X; x++)
+                for (int x = 0; x < RESPONSE_NODE_DIM.x; x++)
                 {
-                    if (x < TEXTURE_COLOR_PADDING || y < TEXTURE_COLOR_PADDING || x > RESPONSE_NODE_DIM.X - TEXTURE_COLOR_PADDING || y > RESPONSE_NODE_DIM.Y - TEXTURE_COLOR_PADDING)
+                    if (x < TEXTURE_COLOR_PADDING || y < TEXTURE_COLOR_PADDING || x > RESPONSE_NODE_DIM.x - TEXTURE_COLOR_PADDING || y > RESPONSE_NODE_DIM.y - TEXTURE_COLOR_PADDING)
                     {
                         responseNodeTexture.SetPixel(x, y, new Color(1f / 100, 1f / 100, 1f / 100) * (30 + 0.65f * y));
                     }
@@ -488,14 +491,14 @@ namespace DialogueSystem
             }
             responseNodeTexture.Apply();
 
-            var addButtonTexture = new Texture2D(BUTTON_DIM.X, BUTTON_DIM.Y);
-            var deleteButtonTexture = new Texture2D(BUTTON_DIM.X, BUTTON_DIM.Y);
-            var resetButtonTexture = new Texture2D(BUTTON_DIM.X, BUTTON_DIM.Y);
-            for (int y = 0; y < BUTTON_DIM.Y; y++)
+            var addButtonTexture = new Texture2D(BUTTON_DIM.x, BUTTON_DIM.y);
+            var deleteButtonTexture = new Texture2D(BUTTON_DIM.x, BUTTON_DIM.y);
+            var resetButtonTexture = new Texture2D(BUTTON_DIM.x, BUTTON_DIM.y);
+            for (int y = 0; y < BUTTON_DIM.y; y++)
             {
-                for (int x = 0; x < BUTTON_DIM.X; x++)
+                for (int x = 0; x < BUTTON_DIM.x; x++)
                 {
-                    if (x < TEXTURE_COLOR_PADDING || y < TEXTURE_COLOR_PADDING || x > BUTTON_DIM.X - TEXTURE_COLOR_PADDING || y > BUTTON_DIM.Y - TEXTURE_COLOR_PADDING)
+                    if (x < TEXTURE_COLOR_PADDING || y < TEXTURE_COLOR_PADDING || x > BUTTON_DIM.x - TEXTURE_COLOR_PADDING || y > BUTTON_DIM.y - TEXTURE_COLOR_PADDING)
                     {
                         addButtonTexture.SetPixel(x, y, new Color(0, 1f / 100, 0) * (50 + 0.9f * y));
                         deleteButtonTexture.SetPixel(x, y, new Color(1f / 100, 0, 0) * (50 + 0.9f * y));

@@ -4,23 +4,27 @@ using UnityEngine;
 
 namespace DialogueSystem
 {
+    /// <summary>
+    /// This class represents the content of a dialogue node.
+    /// It consists of text, an set actor and expression, a list of triggers and a list of responses
+    /// There are 3 types (variants) of sentences - Start, Default, End
+    /// </summary>
     [Serializable]
     public class Sentence
     {
         [Serializable]
-        public enum SentenceType
+        public enum Variant
         {
             Default, Start, End
         }
 
-        
         public Sentence()
         {
             _responses = new List<Response>();
             _text = "";
         }
 
-
+        [Tooltip("The actor that says this sentence")]
         [SerializeField]
         private Actor _actor;
         public Actor Actor
@@ -29,6 +33,7 @@ namespace DialogueSystem
             set => _actor = value;
         }
 
+        [Tooltip("The actor's expression")]
         [SerializeField]
         public int _expressionID;
         public int ExpressionID
@@ -37,6 +42,7 @@ namespace DialogueSystem
             set => _expressionID = value;
         }
 
+        [Tooltip("The text content of this sentence")]
         [SerializeField]
         private string _text;
         public string Text
@@ -45,14 +51,16 @@ namespace DialogueSystem
             set => _text = value;
         }
 
+        [Tooltip("The sentence's type / variant")]
         [SerializeField]
-        private SentenceType _type;
-        public SentenceType Type
+        private Variant _type;
+        public Variant Type
         {
             get => _type;
             set => _type = value;
         }
 
+        [Tooltip("List of triggers")]
         [SerializeField]
         public List<string> _triggers;
         public List<string> Triggers
@@ -61,14 +69,7 @@ namespace DialogueSystem
             set => _triggers = value;
         }
 
-        [SerializeField]
-        private List<string> _effects;
-        public List<string> Effects
-        {
-            get => _effects;
-            set => _effects = value;
-        }
-
+        [Tooltip("List of responses")]
         [SerializeField]
         public List<Response> _responses;
         public List<Response> Responses
@@ -76,17 +77,22 @@ namespace DialogueSystem
             get => _responses;
         }
 
-
+        // Get the response with a specific ID on the list
         public Response GetResponse(int id) => Responses[id];
 
+        // Get the actor's expression
+        public Expression Expression => _actor.GetExpression(_expressionID);
+
+        // Get the first (default) response on the list
         public Response FirstResponse => GetResponse(0);
 
-        public bool HasResponseChoice => Responses.Count != 0 && !FirstResponse.IsEmpty;
+        // Check if a choice must be made
+        public bool HasChoice => Responses.Count > 0 && !FirstResponse.IsEmpty;
 
-        public bool HasNextSentence => Responses.Count == 1 && FirstResponse.IsEmpty;
+        // Check if there is no choice to be made
+        public bool HasNoChoice => Responses.Count > 0 && FirstResponse.IsEmpty;
 
-        public bool IsDialogueEnd => Responses.Count == 0;
-
-        public Expression Expression => _actor.GetExpression(_expressionID);
+        // Check if there are no further connections
+        public bool IsEnd => Responses.Count == 0;
     }
 }

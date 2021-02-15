@@ -5,6 +5,10 @@ using UnityEngine;
 
 namespace DialogueSystem
 {
+    /// <summary>
+    /// Custom node editor window
+    /// Inspector-like, possibly could be changed into just a custom inspector
+    /// </summary>
     public class NodeEditorWindow : EditorWindow
     {
         public static NodeEditorWindow Instance => (NodeEditorWindow)GetWindow(typeof(NodeEditorWindow));
@@ -14,7 +18,7 @@ namespace DialogueSystem
         private Vector2 _scrollPosition = new Vector2(0, 0);
 
 
-        [MenuItem("Tools/DialogueSystem/Node Inspector")]
+        [MenuItem("Tools/DialogueSystem/Node Editor")]
         public static NodeEditorWindow Open()
         {
             NodeEditorWindow inspectorWindow = (NodeEditorWindow)GetWindow(typeof(NodeEditorWindow));
@@ -22,6 +26,7 @@ namespace DialogueSystem
             {
                 inspectorWindow = CreateInstance<NodeEditorWindow>();
             }
+            inspectorWindow.titleContent = new GUIContent("Node Editor");
             return inspectorWindow;
         }
 
@@ -40,8 +45,6 @@ namespace DialogueSystem
 
         private void OnGUI()
         {
-            //Instance.titleContent = new GUIContent("Node Inspector");
-
             if (_selectedNode == null)
             {
                 EditorGUILayout.LabelField("Select a node in the Graph Editor");
@@ -74,9 +77,9 @@ namespace DialogueSystem
             // SENTENCE TYPE
             EditorGUILayout.BeginHorizontal();
             GUILayout.Label("Type", EditorStyles.label);
-            sentence.Type = (Sentence.SentenceType)EditorGUILayout.EnumPopup(sentence.Type);
+            sentence.Type = (Sentence.Variant)EditorGUILayout.EnumPopup(sentence.Type);
             EditorGUILayout.EndHorizontal();
-            if (sentence.Type == Sentence.SentenceType.End)
+            if (sentence.Type == Sentence.Variant.End)
             {
                 return;
             }
@@ -154,7 +157,7 @@ namespace DialogueSystem
 
                 // REQUISITES
                 EditorGUILayout.BeginHorizontal();
-                GUILayout.Label($"     Requisites");
+                GUILayout.Label($"     Conditions");
                 response.Requisites = EditorGUILayout.TextField(response.Requisites);
                 EditorGUILayout.EndHorizontal();
 
@@ -176,10 +179,10 @@ namespace DialogueSystem
         {
             if (index < 0 || dialogue.SentenceCount <= index) return;
 
-            var sentence = dialogue?.SentenceNodes[index]?.Sentence;
+            var sentence = dialogue?.Nodes[index]?.Sentence;
 
             var sDialogue = new SerializedObject(dialogue);
-            var sNodes = sDialogue.FindProperty(nameof(Dialogue._sentenceNodes));
+            var sNodes = sDialogue.FindProperty(nameof(Dialogue._nodes));
             var sNode = sNodes.GetArrayElementAtIndex(index);
             var sSentence = sNode.FindPropertyRelative(nameof(Node._sentence));
             var sTriggers = sSentence.FindPropertyRelative(nameof(Sentence._triggers));
@@ -188,12 +191,12 @@ namespace DialogueSystem
             // SENTENCE TYPE
             EditorGUILayout.BeginHorizontal();
             GUILayout.Label("Type", EditorStyles.label);
-            sentence.Type = (Sentence.SentenceType)EditorGUILayout.EnumPopup(sentence.Type);
+            sentence.Type = (Sentence.Variant)EditorGUILayout.EnumPopup(sentence.Type);
             //EditorGUILayout.PropertyField(sentenceType);
             EditorGUILayout.EndHorizontal();
 
             // RETURN IF END NODE
-            if (sentence.Type == Sentence.SentenceType.End)
+            if (sentence.Type == Sentence.Variant.End)
             {
                 return;
             }

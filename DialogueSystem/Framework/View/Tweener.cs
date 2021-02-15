@@ -5,6 +5,10 @@ using UnityEngine;
 
 namespace DialogueSystem
 {
+    /// <summary>
+    /// Universal tweener for UI panels.
+    /// Can tween X position, Y position and alpha (transparency)
+    /// </summary>
     public class Tweener : MonoBehaviour
     {
         [Header("References")]
@@ -57,7 +61,7 @@ namespace DialogueSystem
         // Show the panel
         public void Show(float delay)
         {
-            Cancel();
+            LeanTween.cancel(rect);
             if (moveInX)
                 LeanTween.moveX(rect, showPos.x, showTime).setEase(showEaseType).setDelay(delay);
             if (moveInY)
@@ -73,7 +77,7 @@ namespace DialogueSystem
         // Hide the panel
         public void Hide(float delay)
         {
-            Cancel();
+            LeanTween.cancel(rect);
             if (moveInX)
                 LeanTween.moveX(rect, hidePos.x, hideTime).setEase(hideEaseType).setDelay(delay);
             if (moveInY)
@@ -100,18 +104,13 @@ namespace DialogueSystem
         // Immediately change to hide state
         public void HideImmediately()
         {
-            Cancel();
+            LeanTween.cancel(rect);
             if (moveInX)
                 LeanTween.moveX(rect, hidePos.x, 0);
             if (moveInY)
                 LeanTween.moveY(rect, hidePos.y, 0);
             if (tweenAlpha)
                 LeanTween.alphaCanvas(canvasGroup, hideAlpha, 0);
-        }
-
-        private void Cancel()
-        {
-            LeanTween.cancel(rect);
         }
     }
 }

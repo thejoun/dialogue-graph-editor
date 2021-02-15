@@ -5,26 +5,29 @@ using UnityEditor;
 
 namespace DialogueSystem
 {
+    /// <summary>
+    /// Custom Inspector of Dialogue assets
+    /// </summary>
     [CustomEditor(typeof(Dialogue))]
     public class DialogueEditor : Editor
     {
         public override void OnInspectorGUI()
         {
+            // the dialogue that is inspected
             Dialogue dialog = target as Dialogue;
 
-
+            // serialized properties
             SerializedObject sDialog = new SerializedObject(dialog);
             SerializedProperty sTitle = sDialog.FindProperty("_title");
             SerializedProperty sDefActor = sDialog.FindProperty("_defaultActor");
 
-            EditorGUILayout.BeginVertical();
+            // title label
             EditorGUILayout.PropertyField(sTitle, new GUIContent("Title"));
+
+            // default actor field
             EditorGUILayout.ObjectField(sDefActor, new GUIContent("Default Actor", "Each new sentence automatically inherits this actor."));
-            EditorGUILayout.EndVertical();
 
-            sDialog.ApplyModifiedProperties();
-
-
+            // node counters
             EditorGUILayout.LabelField($"Sentences: {dialog.SentenceCount}", EditorStyles.miniLabel);
             EditorGUILayout.LabelField($"Responses: {dialog.ResponseCount}", EditorStyles.miniLabel);
             if (dialog.DeletedCount != 0)
@@ -32,23 +35,25 @@ namespace DialogueSystem
                 EditorGUILayout.LabelField(new GUIContent($"Soft-deleted nodes: {dialog.DeletedCount}", "Only for debug, no worries."), EditorStyles.miniLabel);
             }
 
-
-            if (dialog.GetCountOfType(Sentence.SentenceType.Start) < 1)
+            // suggestions / alerts
+            if (dialog.GetSentenceCount(Sentence.Variant.Start) < 1)
             {
                 EditorGUILayout.LabelField($"Add a START sentence.", EditorStyles.boldLabel);
             }
-            if (dialog.GetCountOfType(Sentence.SentenceType.Start) > 1)
+            if (dialog.GetSentenceCount(Sentence.Variant.Start) > 1)
             {
                 EditorGUILayout.LabelField($"Too many START sentences.", EditorStyles.boldLabel);
             }
 
-
+            // edit button
             if (GUILayout.Button("Edit"))
             {
                 GraphEditorWindow.Open(dialog);
-
                 NodeEditorWindow.Open();
             }
+
+            // save the edited properties
+            sDialog.ApplyModifiedProperties();
         }
     }
 

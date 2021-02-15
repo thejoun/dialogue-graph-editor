@@ -2,6 +2,11 @@
 
 namespace DialogueSystem
 {
+    /// <summary>
+    /// Controls the flow of dialogue.
+    /// Interacts with the Sentence View.
+    /// Sentence View and Response View access it.
+    /// </summary>
     public class DialogueController : MonoBehaviour
     {
         [Header("References")]
@@ -56,7 +61,7 @@ namespace DialogueSystem
 
         public void ToNextSentence()
         {
-            if (_currentSentence.HasNextSentence)
+            if (_currentSentence.HasNoChoice)
                 ShowSentence(_currentDialogue.GetSentence(_currentSentence.FirstResponse.NextId));
             else
                 ShowSentence(null);
@@ -64,7 +69,7 @@ namespace DialogueSystem
 
         public void OnTypingFinished()
         {
-            if (_currentSentence.HasResponseChoice)
+            if (_currentSentence.HasChoice)
                 sentenceView.ShowResponses();
             else
                 sentenceView.WaitForClick();
@@ -75,7 +80,7 @@ namespace DialogueSystem
 
         private void ShowSentence(Sentence sentence)
         {
-            bool end = sentence == null || sentence.Type == Sentence.SentenceType.End;
+            bool end = sentence == null || sentence.Type == Sentence.Variant.End;
             bool enter = _currentSentence == null;
             bool sameActor = _currentSentence?.Actor == sentence.Actor;
 

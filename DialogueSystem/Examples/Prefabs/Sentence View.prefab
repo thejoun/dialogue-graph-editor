@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 8653771297181435227}
   - component: {fileID: 605097360524158772}
   m_Layer: 5
-  m_Name: Sentence Panel
+  m_Name: Sentence View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,7 +209,6 @@ MonoBehaviour:
     _text: 
     _type: 0
     _triggers: []
-    _effects: []
     _responses: []
 --- !u!114 &605097360524158772
 MonoBehaviour:
@@ -258,7 +257,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 15}
-  m_SizeDelta: {x: -40, y: 70}
+  m_SizeDelta: {x: -80, y: 70}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &1582670353077336385
 CanvasRenderer:
@@ -589,7 +588,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 500}
+  m_SizeDelta: {x: 250, y: 500}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &6852023061118403717
 CanvasRenderer:

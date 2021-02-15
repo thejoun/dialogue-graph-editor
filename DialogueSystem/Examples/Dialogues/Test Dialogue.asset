@@ -14,297 +14,266 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _title: Dialogue 1
   _defaultActor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
-  _id: 0
-  _sentenceNodes:
+  _nodes:
   - _id: 0
     _sentence:
       _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
-      _expressionID: 0
-      _text: Hello! Welcome to Nodimo's pizza.
+      _expressionID: 1
+      _text: Hi there!
       _type: 1
       _triggers: []
-      _effects: []
       _responses:
       - _text: 
-        _nextId: 3
-        _requisites: 
+        _nextId: 9
+        _conditions: 
     _rect:
       serializedVersion: 2
-      x: 23.290253
-      y: 73.35367
+      x: 10.215759
+      y: 75
       width: 130
-      height: 59.999992
+      height: 60
     _deletedFlag: 0
   - _id: 1
     _sentence:
       _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
       _expressionID: 0
-      _text: No, not really. I'm sorry.
+      _text: You don't really look like you're from around here. Say Adam, where
+        are you from?
       _type: 0
       _triggers: []
-      _effects: []
       _responses:
-      - _text: 
-        _nextId: 6
-        _requisites: 
+      - _text: I came here from Newton.
+        _nextId: 2
+        _conditions: 
+      - _text: I've lived here all my life!
+        _nextId: 4
+        _conditions: 
+      - _text: I'm actually from Poland.
+        _nextId: 10
+        _conditions: 
+      - _text: Sorry, I have to go.
+        _nextId: 5
+        _conditions: 
     _rect:
       serializedVersion: 2
-      x: 361.93912
-      y: 184.21951
+      x: 12.554147
+      y: 335.68045
       width: 130
-      height: 59.999992
+      height: 60
     _deletedFlag: 0
   - _id: 2
     _sentence:
       _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
-      _expressionID: 1
-      _text: Thanks! Though I'm sure that's not what you came here for, right?
+      _expressionID: 0
+      _text: Newton, eh? I heard there's trouble brewing down there.
       _type: 0
       _triggers: []
-      _effects: []
       _responses:
-      - _text: 
-        _nextId: 5
-        _requisites: 
+      - _text: I haven't heard aboutany trouble.
+        _nextId: 3
+        _conditions: 
+      - _text: Did I say Newton? I'm actually from Springville.
+        _nextId: 4
+        _conditions: 
     _rect:
       serializedVersion: 2
-      x: 28.585403
-      y: 356.68304
+      x: 297.6444
+      y: 332.27448
       width: 130
-      height: 59.999992
+      height: 60
     _deletedFlag: 0
   - _id: 3
     _sentence:
       _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
       _expressionID: 0
-      _text: How can I help you?
+      _text: Don't you worry about it.
       _type: 0
       _triggers: []
-      _effects: []
       _responses:
-      - _text: Hi, I'd like to place an order.
-        _nextId: 4
-        _requisites: 
-      - _text: Hey, are you open tomorrow?
-        _nextId: 1
-        _requisites: 
-      - _text: Nice shoes!
-        _nextId: 2
-        _requisites: 
-      - _text: Sorry, I have to leave.
-        _nextId: 14
-        _requisites: 
+      - _text: 
+        _nextId: 12
+        _conditions: 
     _rect:
       serializedVersion: 2
-      x: 20.070723
-      y: 219.06093
+      x: 611.7947
+      y: 331.30447
       width: 130
-      height: 59.999992
+      height: 60
     _deletedFlag: 0
   - _id: 4
     _sentence:
       _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
-      _expressionID: 0
-      _text: Sure! What kind of pizza would you like today?
+      _expressionID: 1
+      _text: Oh really? Then you must know Mr. Bowler.
       _type: 0
       _triggers: []
-      _effects: []
       _responses:
-      - _text: I'll take a medium pepperoni.
-        _nextId: 8
-        _requisites: 
-      - _text: I'll have a big havaiian.
-        _nextId: 9
-        _requisites: 
+      - _text: Mr. Bowler is a goodfriend of mine!
+        _nextId: 6
+        _conditions: 
+      - _text: Who?
+        _nextId: 3
+        _conditions: 
     _rect:
       serializedVersion: 2
-      x: 369.5342
-      y: 74.4025
+      x: 287.01285
+      y: 158.76317
       width: 130
-      height: 59.999992
+      height: 60
     _deletedFlag: 0
   - _id: 5
     _sentence:
-      _actor: {fileID: 11400000, guid: e72dd39be8762ca43869fddddf1128e4, type: 2}
+      _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
       _expressionID: 0
-      _text: Yeah, right...
-      _type: 0
+      _text: 
+      _type: 2
       _triggers: []
-      _effects: []
-      _responses:
-      - _text: 
-        _nextId: 3
-        _requisites: 
+      _responses: []
     _rect:
       serializedVersion: 2
-      x: 208.78041
-      y: 354.90247
+      x: 10.839866
+      y: 515.2444
       width: 130
-      height: 59.999992
+      height: 60
     _deletedFlag: 0
   - _id: 6
     _sentence:
-      _actor: {fileID: 11400000, guid: e72dd39be8762ca43869fddddf1128e4, type: 2}
-      _expressionID: 0
-      _text: Okay, I guess I can surive one day without your pizza.
+      _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
+      _expressionID: 2
+      _text: You liar! There ain't no Mr. Bowler, I made him up!
       _type: 0
       _triggers: []
-      _effects: []
       _responses:
       - _text: 
-        _nextId: 7
-        _requisites: 
+        _nextId: 12
+        _conditions: 
     _rect:
       serializedVersion: 2
-      x: 377.40018
-      y: 277.5
+      x: 608.1405
+      y: 164.01128
       width: 130
-      height: 59.999992
+      height: 60
     _deletedFlag: 0
   - _id: 7
     _sentence:
       _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
       _expressionID: 0
-      _text: I feel you. I'm kinda addicted myself, to be honest...
-      _type: 0
+      _text: 
+      _type: 2
       _triggers: []
-      _effects: []
-      _responses:
-      - _text: 
-        _nextId: 3
-        _requisites: 
+      _responses: []
     _rect:
       serializedVersion: 2
-      x: 214.40004
-      y: 267.5
+      x: 883.15674
+      y: 143.36702
       width: 130
-      height: 59.999992
+      height: 60
     _deletedFlag: 0
   - _id: 8
     _sentence:
       _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
-      _expressionID: 0
-      _text: One pepperoni, coming right up!
+      _expressionID: 1
+      _text: That sounds awesome! Let's go!
       _type: 0
       _triggers: []
-      _effects: []
-      _responses:
-      - _text: 
-        _nextId: 10
-        _requisites: 
+      _responses: []
     _rect:
       serializedVersion: 2
-      x: 664.4
-      y: 66.5
+      x: 887.1617
+      y: 496.56015
       width: 130
-      height: 59.999992
+      height: 60
     _deletedFlag: 0
   - _id: 9
     _sentence:
-      _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
-      _expressionID: 1
-      _text: Bold choice. Okay, I'll be back in a jiffy.
+      _actor: {fileID: 11400000, guid: e72dd39be8762ca43869fddddf1128e4, type: 2}
+      _expressionID: 0
+      _text: Hello! Nice to meet you, I'm Adam.
       _type: 0
       _triggers: []
-      _effects: []
       _responses:
       - _text: 
-        _nextId: 10
-        _requisites: 
+        _nextId: 1
+        _conditions: 
     _rect:
       serializedVersion: 2
-      x: 561.4
-      y: 165.50005
+      x: 11.71051
+      y: 212.5
       width: 130
-      height: 59.999992
+      height: 60
     _deletedFlag: 0
   - _id: 10
     _sentence:
-      _actor: {fileID: 11400000, guid: 21cf6c6905582504795d477381c7e36b, type: 2}
+      _actor: {fileID: 11400000, guid: e72dd39be8762ca43869fddddf1128e4, type: 2}
       _expressionID: 0
-      _text: The lady leaves toward the kitchen. You sit comfortably on the chair
-        and stare through the window for a solid fifteen minutes.
+      _text: You know, it's this weird country in Europe. Red and white flag.
       _type: 0
       _triggers: []
-      _effects: []
       _responses:
       - _text: 
         _nextId: 11
-        _requisites: 
+        _conditions: 
     _rect:
       serializedVersion: 2
-      x: 675.4
-      y: 239.50002
+      x: 280.24435
+      y: 468.96616
       width: 130
-      height: 59.999992
+      height: 60
     _deletedFlag: 0
   - _id: 11
     _sentence:
-      _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
-      _expressionID: 1
-      _text: Here comes your pizza! Bon appetit!
-      _type: 0
-      _triggers: []
-      _effects: []
-      _responses:
-      - _text: 
-        _nextId: 12
-        _requisites: 
-    _rect:
-      serializedVersion: 2
-      x: 673.39996
-      y: 348.5001
-      width: 130
-      height: 59.999992
-    _deletedFlag: 0
-  - _id: 12
-    _sentence:
       _actor: {fileID: 11400000, guid: e72dd39be8762ca43869fddddf1128e4, type: 2}
       _expressionID: 0
-      _text: Thanks!
+      _text: Kielbasa and pierogi.
       _type: 0
       _triggers: []
-      _effects: []
       _responses:
       - _text: 
         _nextId: 13
-        _requisites: 
+        _conditions: 
     _rect:
       serializedVersion: 2
-      x: 524.4
-      y: 264.5
+      x: 462.71432
+      y: 466.4286
       width: 130
-      height: 59.999992
+      height: 60
+    _deletedFlag: 0
+  - _id: 12
+    _sentence:
+      _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
+      _expressionID: 0
+      _text: Say,do you have something to eat? I'm starving.
+      _type: 0
+      _triggers: []
+      _responses:
+      - _text: No, but we could go to Johnny's for some juicy burgers.
+        _nextId: 8
+        _conditions: 
+      - _text: Sorry, I've got nothing.
+        _nextId: 7
+        _conditions: 
+    _rect:
+      serializedVersion: 2
+      x: 882.71436
+      y: 330.7143
+      width: 130
+      height: 60
     _deletedFlag: 0
   - _id: 13
     _sentence:
       _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
       _expressionID: 0
-      _text: 
-      _type: 2
+      _text: Oh, please stop, you make me hungry.
+      _type: 0
       _triggers: []
-      _effects: []
-      _responses: []
+      _responses:
+      - _text: 
+        _nextId: 12
+        _conditions: 
     _rect:
       serializedVersion: 2
-      x: 523.4
-      y: 354.50003
+      x: 652.71436
+      y: 459.28574
       width: 130
-      height: 59.999992
-    _deletedFlag: 0
-  - _id: 14
-    _sentence:
-      _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
-      _expressionID: 0
-      _text: 
-      _type: 2
-      _triggers: []
-      _effects: []
-      _responses: []
-    _rect:
-      serializedVersion: 2
-      x: 171.40002
-      y: 70.499985
-      width: 130
-      height: 59.999992
+      height: 60
     _deletedFlag: 0

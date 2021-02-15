@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace DialogueSystem
 {
+    /// <summary>
+    /// A helper class that types some text in a UI Text.
+    /// </summary>
     public class TextTyper : MonoBehaviour
     {
         public string Text { get; set; }
@@ -25,7 +28,7 @@ namespace DialogueSystem
         private string TypedText => Text.Substring(0, TypedLength);
         public bool Finished => Progress >= 1;
 
-
+        // Begin typing text
         public void Begin(string text, float speed, TextMeshProUGUI ui, Action callback)
         {
             Text = text;
@@ -36,6 +39,7 @@ namespace DialogueSystem
             StartCoroutine("Type");
         }
 
+        // Typing process
         private IEnumerator Type()
         {
             _timer = 0;
@@ -48,6 +52,7 @@ namespace DialogueSystem
             Callback?.Invoke();
         }
 
+        // Finish typing early
         public void Finish()
         {
             _timer = TypingTime;

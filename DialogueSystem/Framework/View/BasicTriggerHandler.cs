@@ -4,6 +4,12 @@ using UnityEngine;
 
 namespace DialogueSystem
 {
+
+    /// <summary>
+    /// This is a basic implementation of a trigger handler.
+    /// Doesn't do much except for providing a way to read and filter triggers.
+    /// You can either expand this or create your own handler.
+    /// </summary>
     public class BasicTriggerHandler : TriggerHandler
     {
         public override void Handle(string trigger)

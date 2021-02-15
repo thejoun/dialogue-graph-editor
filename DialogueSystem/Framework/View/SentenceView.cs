@@ -8,6 +8,10 @@ using System.Linq;
 
 namespace DialogueSystem
 {
+    /// <summary>
+    /// View for sentences - main UI panel.
+    /// Shows sentences and accepts clicks.
+    /// </summary>
     public class SentenceView : MonoBehaviour, IPointerClickHandler
     {
         [Header("References")]
@@ -24,18 +28,17 @@ namespace DialogueSystem
         public GameObject responsePanelPrefab;
 
 
-        // shortcuts
         private DialogueController Controller => DialogueController.Instance;
         private Action ClickCallback => Controller.ToNextSentence;
         private Action TypingCallback => Controller.OnTypingFinished;
 
 
-        // internal state
         public Sentence Sentence;
         private bool _waitingForClick;
         private List<ResponseView> _responseViews;
 
 
+        // apply set data and start showing text
         private void Apply()
         {
             typer.Begin(Sentence.Text, Controller.TypingSpeed, textUi, TypingCallback);
@@ -43,35 +46,45 @@ namespace DialogueSystem
             imageUi.sprite = Sentence.Expression.Sprite;
         }
 
+        // when a new dialogue begins - show everything
         public void Enter()
         {
             Apply();
             tweeners.ForEach(t => t.Show());
         }
+
+        // when a new sentence is shown with the same actor - only apply
         public void SameActor()
         {
             Apply();
         }
+
+        // when a new sentence starts with a different actor - re-enter everything
         public void DifferentActor()
         {
             tweeners.ForEach(t => t.ReEnter());
             LeanTween.delayedCall(tweeners[0].HideTime, Apply);
         }
 
+        // when the dialogue ends - hide everything
         public void Hide()
         {
             tweeners.ForEach(t => t.Hide());
         }
+
+        // immediately set everything as hidden
         public void HideImmediately()
         {
             tweeners.ForEach(t => t.HideImmediately());
         }
 
+        // tell the view that it should accept clicks now
         public void WaitForClick()
         {
             _waitingForClick = true;
         }
 
+        // show the sentence's responses
         public void ShowResponses()
         {
             _responseViews = new List<ResponseView>();
@@ -87,6 +100,8 @@ namespace DialogueSystem
                 }
             }
         }
+
+        // hide all the shown responses
         public void HideResponses()
         {
             for (int i = 0; i < _responseViews.Count; i++)
@@ -96,6 +111,7 @@ namespace DialogueSystem
             }
         }
 
+        // when the panel is clicked
         public void OnPointerClick(PointerEventData eventData)
         {
             if (typer.Text != string.Empty && !typer.Finished)
@@ -108,6 +124,5 @@ namespace DialogueSystem
                 ClickCallback?.Invoke();
             }
         }
-
     }
 }

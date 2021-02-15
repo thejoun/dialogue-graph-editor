@@ -5,7 +5,12 @@ using TMPro;
 
 namespace DialogueSystem
 {
-    public class ResponseView : MonoBehaviour/*, IPointerClickHandler*/
+    /// <summary>
+    /// View for a response button.
+    /// Shows the response and accepts clicks.
+    /// The actual UI button must be set to call OnClick().
+    /// </summary>
+    public class ResponseView : MonoBehaviour
     {
         [Header("References")]
         public RectTransform rect;
@@ -19,18 +24,15 @@ namespace DialogueSystem
         public float delay;
 
 
-        // public
         public Response Response { get; set; }
 
 
-        // shortcuts
         private DialogueController Controller => DialogueController.Instance;
         private Action<Response> Callback => Controller.ChooseResponse;
         private float GetDelay(int nr) => nr * delay;
 
 
-        // internal state
-        private bool _acceptClicks;     // if the panel should be accepting clicks now
+        private bool _acceptClicks;
 
 
         // Show this response as the nr-th in the list
@@ -51,6 +53,7 @@ namespace DialogueSystem
             _acceptClicks = false;
         }
 
+        // Method called by a button click
         public void OnClick()
         {
             if (_acceptClicks)
@@ -58,16 +61,5 @@ namespace DialogueSystem
                 Callback?.Invoke(Response);
             }
         }
-
-            /*
-        // When the panel is clicked
-        public void OnPointerClick(PointerEventData eventData)
-        {
-            if (_acceptClicks)
-            {
-                Callback?.Invoke(Response);
-            }
-        }
-            */
     }
 }
