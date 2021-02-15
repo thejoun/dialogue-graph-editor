@@ -82,11 +82,9 @@ namespace DialogueSystem
         {
             bool end = sentence == null || sentence.Type == Sentence.Variant.End;
             bool enter = _currentSentence == null;
-            bool sameActor = _currentSentence?.Actor == sentence.Actor;
+            bool sameActor = _currentSentence?.Actor == sentence?.Actor;
 
             sentenceView.Sentence = sentence;
-
-            PlayTriggers(sentence);
 
             if (end)
             {
@@ -105,6 +103,11 @@ namespace DialogueSystem
             else if(!sameActor)
             {
                 sentenceView.DifferentActor();
+            }
+
+            if (!end)
+            {
+                PlayTriggers(sentence);
             }
 
             _currentSentence = sentence;

@@ -31,7 +31,7 @@ MonoBehaviour:
       x: 10.215759
       y: 75
       width: 130
-      height: 60
+      height: 59.999985
     _deletedFlag: 0
   - _id: 1
     _sentence:
@@ -57,9 +57,9 @@ MonoBehaviour:
     _rect:
       serializedVersion: 2
       x: 12.554147
-      y: 335.68045
+      y: 335.68042
       width: 130
-      height: 60
+      height: 59.999985
     _deletedFlag: 0
   - _id: 2
     _sentence:
@@ -78,9 +78,9 @@ MonoBehaviour:
     _rect:
       serializedVersion: 2
       x: 297.6444
-      y: 332.27448
+      y: 332.2745
       width: 130
-      height: 60
+      height: 59.999985
     _deletedFlag: 0
   - _id: 3
     _sentence:
@@ -95,10 +95,10 @@ MonoBehaviour:
         _conditions: 
     _rect:
       serializedVersion: 2
-      x: 611.7947
-      y: 331.30447
+      x: 613.2232
+      y: 329.87592
       width: 130
-      height: 60
+      height: 59.999985
     _deletedFlag: 0
   - _id: 4
     _sentence:
@@ -116,10 +116,10 @@ MonoBehaviour:
         _conditions: 
     _rect:
       serializedVersion: 2
-      x: 287.01285
+      x: 287.01282
       y: 158.76317
       width: 130
-      height: 60
+      height: 59.999985
     _deletedFlag: 0
   - _id: 5
     _sentence:
@@ -131,10 +131,10 @@ MonoBehaviour:
       _responses: []
     _rect:
       serializedVersion: 2
-      x: 10.839866
+      x: 10.839863
       y: 515.2444
       width: 130
-      height: 60
+      height: 59.999985
     _deletedFlag: 0
   - _id: 6
     _sentence:
@@ -149,10 +149,10 @@ MonoBehaviour:
         _conditions: 
     _rect:
       serializedVersion: 2
-      x: 608.1405
+      x: 608.14044
       y: 164.01128
       width: 130
-      height: 60
+      height: 59.999985
     _deletedFlag: 0
   - _id: 7
     _sentence:
@@ -167,7 +167,7 @@ MonoBehaviour:
       x: 883.15674
       y: 143.36702
       width: 130
-      height: 60
+      height: 59.999985
     _deletedFlag: 0
   - _id: 8
     _sentence:
@@ -179,10 +179,10 @@ MonoBehaviour:
       _responses: []
     _rect:
       serializedVersion: 2
-      x: 887.1617
-      y: 496.56015
+      x: 889.4547
+      y: 486.48486
       width: 130
-      height: 60
+      height: 59.999985
     _deletedFlag: 0
   - _id: 9
     _sentence:
@@ -197,10 +197,10 @@ MonoBehaviour:
         _conditions: 
     _rect:
       serializedVersion: 2
-      x: 11.71051
+      x: 11.710505
       y: 212.5
       width: 130
-      height: 60
+      height: 59.999985
     _deletedFlag: 0
   - _id: 10
     _sentence:
@@ -215,10 +215,10 @@ MonoBehaviour:
         _conditions: 
     _rect:
       serializedVersion: 2
-      x: 280.24435
+      x: 280.2444
       y: 468.96616
       width: 130
-      height: 60
+      height: 59.999985
     _deletedFlag: 0
   - _id: 11
     _sentence:
@@ -233,16 +233,16 @@ MonoBehaviour:
         _conditions: 
     _rect:
       serializedVersion: 2
-      x: 462.71432
+      x: 464.1429
       y: 466.4286
       width: 130
-      height: 60
+      height: 59.999985
     _deletedFlag: 0
   - _id: 12
     _sentence:
       _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
       _expressionID: 0
-      _text: Say,do you have something to eat? I'm starving.
+      _text: Say, do you have something to eat? I'm starving.
       _type: 0
       _triggers: []
       _responses:
@@ -254,10 +254,10 @@ MonoBehaviour:
         _conditions: 
     _rect:
       serializedVersion: 2
-      x: 882.71436
-      y: 330.7143
+      x: 890.83466
+      y: 329.39856
       width: 130
-      height: 60
+      height: 59.999985
     _deletedFlag: 0
   - _id: 13
     _sentence:
@@ -272,8 +272,8 @@ MonoBehaviour:
         _conditions: 
     _rect:
       serializedVersion: 2
-      x: 652.71436
-      y: 459.28574
+      x: 652.7143
+      y: 457.85715
       width: 130
-      height: 60
+      height: 59.999985
     _deletedFlag: 0

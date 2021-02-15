@@ -92,6 +92,8 @@ namespace DialogueSystem
             {
                 graphEditorWindow = CreateInstance<GraphEditorWindow>();
             }
+            Instance.titleContent = new GUIContent("Graph Editor");
+            Instance.PrepareStyles();
             return graphEditorWindow;
         }
 
@@ -107,8 +109,7 @@ namespace DialogueSystem
         // when the window is enabled
         private void OnEnable()
         {
-            Instance.titleContent = new GUIContent("Graph Editor");
-            Instance.PrepareStyles();
+            
         }
 
         // When an asset is selected in Unity, show it if it's a Dialogue
