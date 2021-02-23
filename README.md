@@ -1,35 +1,34 @@
 # Dialogue System for Unity
 
-Dialogue System is a straightforward framework for edition and display of dialogues inside Unity. It allows you to:
+Dialogue System is a simple framework for edition and display of dialogues inside Unity. It allows you to:
 
 - edit dialogue graphs and data visually
 - create actors with several expressions
 - display the dialogues in a pleasant VN style
 - handle text-based triggers
-- ~~set conditions for specific responses~~ (coming soon)
 - easily move created assets around
 
-<img src="https://github.com/TheJonu/Dialogue-Tool/blob/main/img/screen_1.PNG">
+Coming soon:
 
-<img src="https://github.com/TheJonu/Dialogue-Tool/blob/main/img/screen_2.png">
+- set conditions for specific responses
+- export dialogues to JSON
 
-<img src="https://github.com/TheJonu/Dialogue-Tool/blob/main/img/screen_3.png" width="60%">
+<img src="https://github.com/TheJonu/Dialogue-Tool/blob/main/img/screen1.png">
+
+<img src="https://github.com/TheJonu/Dialogue-Tool/blob/main/img/screen2.png">
+
+<img src="https://github.com/TheJonu/Dialogue-Tool/blob/main/img/screen3.png" width="60%">
 
 ### Installation
 
-Just put this in your project. You can either:
+To use the system in your project, download and import *DialogueSystem.unitypackage*.
 
-- download and import *DialogueSystem.unitypackage*
-- directly drop the *DialogueSystem* folder into your *Assets*
-
-### Dependencies
-
-You need these packages to view the dialogues:
+You need these other packages to view dialogues in-game:
 
 - LeanTween (tested with v2.50) ([link](https://assetstore.unity.com/packages/tools/animation/leantween-3595))
 - TextMeshPro (tested with v3.0.1)
 
-The system has been tested in Unity 2020.2.3f1.
+The system has been tested in Unity 2020.2.3f1 and higher.
 
 ### Content
 
@@ -37,10 +36,9 @@ The system has been tested in Unity 2020.2.3f1.
     - data - stores info about dialogues, actors
     - controller - controls the flow of dialogues and handles events
     - view - displays the dialogue in-game and accepts input
-- Tools for editing the data
-    - *Graph Editor* - for editing dialogue graphs
-    - *Node Editor* - edits sentences and responses
-    - custom inspector for Dialogue assets
+- Tools
+    - *Graph Editor* - edit dialogue graphs
+    - *Node Editor* - edit sentences and responses
 - Examples 
     - test scene with a test dialogue
     - basic adjustable UI setup
