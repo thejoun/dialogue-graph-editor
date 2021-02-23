@@ -21,9 +21,7 @@ Coming soon:
 
 ### Installation
 
-To use the system in your project, download and import *DialogueSystem.unitypackage*.
-
-You need these other packages to view dialogues in-game:
+To use the system in your project, download and import *DialogueSystem.unitypackage*. It also contains these dependencies:
 
 - LeanTween (tested with v2.50) ([link](https://assetstore.unity.com/packages/tools/animation/leantween-3595))
 - TextMeshPro (tested with v3.0.1)
