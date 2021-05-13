@@ -56,7 +56,7 @@ MonoBehaviour:
         _conditions: 
     _rect:
       serializedVersion: 2
-      x: 12.9077
+      x: 12.907699
       y: 327.31845
       width: 130
       height: 59.99998
@@ -131,7 +131,7 @@ MonoBehaviour:
       _responses: []
     _rect:
       serializedVersion: 2
-      x: 8.6176605
+      x: 8.617662
       y: 511.91077
       width: 130
       height: 59.99998
@@ -180,7 +180,7 @@ MonoBehaviour:
     _rect:
       serializedVersion: 2
       x: 888.0999
-      y: 496.48462
+      y: 496.48465
       width: 130
       height: 59.99998
     _deletedFlag: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
         _conditions: 
     _rect:
       serializedVersion: 2
-      x: 10.599438
+      x: 10.59944
       y: 215.83327
       width: 130
       height: 59.99998
@@ -216,7 +216,7 @@ MonoBehaviour:
     _rect:
       serializedVersion: 2
       x: 301.35547
-      y: 471.1883
+      y: 471.18832
       width: 130
       height: 59.99998
     _deletedFlag: 0
@@ -234,7 +234,7 @@ MonoBehaviour:
     _rect:
       serializedVersion: 2
       x: 481.92075
-      y: 470.87323
+      y: 470.8732
       width: 130
       height: 59.99998
     _deletedFlag: 0

@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c952573cfa2c21c4bb32cad1c78e07e4, type: 3}
+  m_Name: Dialogue 2
+  m_EditorClassIdentifier: 
+  _title: 
+  _defaultActor: {fileID: 0}
+  _nodes:
+  - _id: 0
+    _sentence:
+      _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
+      _expressionID: 0
+      _text: Hi there!
+      _type: 1
+      _triggers: []
+      _responses:
+      - _text: Hello!
+        _nextId: 1
+        _conditions: 
+      - _text: Sorry, gotta go!
+        _nextId: 2
+        _conditions: 
+    _rect:
+      serializedVersion: 2
+      x: 142.16669
+      y: 238.8333
+      width: 130
+      height: 59.99998
+    _deletedFlag: 0
+  - _id: 1
+    _sentence:
+      _actor: {fileID: 11400000, guid: e72dd39be8762ca43869fddddf1128e4, type: 2}
+      _expressionID: 0
+      _text: What are you doing?
+      _type: 0
+      _triggers: []
+      _responses:
+      - _text: 
+        _nextId: 3
+        _conditions: 
+    _rect:
+      serializedVersion: 2
+      x: 414.83337
+      y: 145.3333
+      width: 130
+      height: 59.99998
+    _deletedFlag: 0
+  - _id: 2
+    _sentence:
+      _actor: {fileID: 0}
+      _expressionID: 0
+      _text: 
+      _type: 2
+      _triggers: []
+      _responses: []
+    _rect:
+      serializedVersion: 2
+      x: 463
+      y: 338.16666
+      width: 130
+      height: 59.99998
+    _deletedFlag: 0
+  - _id: 3
+    _sentence:
+      _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
+      _expressionID: 0
+      _text: Oh, I just wanted to see if
+      _type: 0
+      _triggers: []
+      _responses:
+      - _text: Well, bye.
+        _nextId: 2
+        _conditions: 
+      - _text: Good luck!
+        _nextId: 4
+        _conditions: 
+    _rect:
+      serializedVersion: 2
+      x: 585
+      y: 126.00001
+      width: 130
+      height: 59.999992
+    _deletedFlag: 0
+  - _id: 4
+    _sentence:
+      _actor: {fileID: 11400000, guid: 8f71d96fcea0ed643ac6197f9b761e32, type: 2}
+      _expressionID: 0
+      _text: Thanks a bunch! Have a nice day!
+      _type: 0
+      _triggers: []
+      _responses: []
+    _rect:
+      serializedVersion: 2
+      x: 709
+      y: 289
+      width: 130
+      height: 59.999992
+    _deletedFlag: 0
