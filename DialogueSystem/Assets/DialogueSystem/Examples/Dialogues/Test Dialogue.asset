@@ -29,9 +29,9 @@ MonoBehaviour:
     _rect:
       serializedVersion: 2
       x: 10.215759
-      y: 75
+      y: 98.33331
       width: 130
-      height: 59.999985
+      height: 59.99998
     _deletedFlag: 0
   - _id: 1
     _sentence:
@@ -56,10 +56,10 @@ MonoBehaviour:
         _conditions: 
     _rect:
       serializedVersion: 2
-      x: 12.554147
-      y: 335.68042
+      x: 12.9077
+      y: 327.31845
       width: 130
-      height: 59.999985
+      height: 59.99998
     _deletedFlag: 0
   - _id: 2
     _sentence:
@@ -77,10 +77,10 @@ MonoBehaviour:
         _conditions: 
     _rect:
       serializedVersion: 2
-      x: 297.6444
-      y: 332.2745
+      x: 305.42218
+      y: 333.38568
       width: 130
-      height: 59.999985
+      height: 59.99998
     _deletedFlag: 0
   - _id: 3
     _sentence:
@@ -95,10 +95,10 @@ MonoBehaviour:
         _conditions: 
     _rect:
       serializedVersion: 2
-      x: 613.2232
-      y: 329.87592
+      x: 658.8898
+      y: 329.32047
       width: 130
-      height: 59.999985
+      height: 59.99998
     _deletedFlag: 0
   - _id: 4
     _sentence:
@@ -116,10 +116,10 @@ MonoBehaviour:
         _conditions: 
     _rect:
       serializedVersion: 2
-      x: 287.01282
-      y: 158.76317
+      x: 305.124
+      y: 145.09647
       width: 130
-      height: 59.999985
+      height: 59.99998
     _deletedFlag: 0
   - _id: 5
     _sentence:
@@ -131,10 +131,10 @@ MonoBehaviour:
       _responses: []
     _rect:
       serializedVersion: 2
-      x: 10.839863
-      y: 515.2444
+      x: 8.6176605
+      y: 511.91077
       width: 130
-      height: 59.999985
+      height: 59.99998
     _deletedFlag: 0
   - _id: 6
     _sentence:
@@ -149,10 +149,10 @@ MonoBehaviour:
         _conditions: 
     _rect:
       serializedVersion: 2
-      x: 608.14044
-      y: 164.01128
+      x: 650.58484
+      y: 144.23349
       width: 130
-      height: 59.999985
+      height: 59.99998
     _deletedFlag: 0
   - _id: 7
     _sentence:
@@ -164,10 +164,10 @@ MonoBehaviour:
       _responses: []
     _rect:
       serializedVersion: 2
-      x: 883.15674
-      y: 143.36702
+      x: 885.15717
+      y: 142.36702
       width: 130
-      height: 59.999985
+      height: 59.99998
     _deletedFlag: 0
   - _id: 8
     _sentence:
@@ -179,10 +179,10 @@ MonoBehaviour:
       _responses: []
     _rect:
       serializedVersion: 2
-      x: 889.4547
-      y: 486.48486
+      x: 888.0999
+      y: 496.48462
       width: 130
-      height: 59.999985
+      height: 59.99998
     _deletedFlag: 0
   - _id: 9
     _sentence:
@@ -197,10 +197,10 @@ MonoBehaviour:
         _conditions: 
     _rect:
       serializedVersion: 2
-      x: 11.710505
-      y: 212.5
+      x: 10.599438
+      y: 215.83327
       width: 130
-      height: 59.999985
+      height: 59.99998
     _deletedFlag: 0
   - _id: 10
     _sentence:
@@ -215,10 +215,10 @@ MonoBehaviour:
         _conditions: 
     _rect:
       serializedVersion: 2
-      x: 280.2444
-      y: 468.96616
+      x: 301.35547
+      y: 471.1883
       width: 130
-      height: 59.999985
+      height: 59.99998
     _deletedFlag: 0
   - _id: 11
     _sentence:
@@ -233,10 +233,10 @@ MonoBehaviour:
         _conditions: 
     _rect:
       serializedVersion: 2
-      x: 464.1429
-      y: 466.4286
+      x: 481.92075
+      y: 470.87323
       width: 130
-      height: 59.999985
+      height: 59.99998
     _deletedFlag: 0
   - _id: 12
     _sentence:
@@ -254,10 +254,10 @@ MonoBehaviour:
         _conditions: 
     _rect:
       serializedVersion: 2
-      x: 890.83466
+      x: 890.83453
       y: 329.39856
       width: 130
-      height: 59.999985
+      height: 59.99998
     _deletedFlag: 0
   - _id: 13
     _sentence:
@@ -272,8 +272,8 @@ MonoBehaviour:
         _conditions: 
     _rect:
       serializedVersion: 2
-      x: 652.7143
-      y: 457.85715
+      x: 669.15875
+      y: 469.07935
       width: 130
-      height: 59.999985
+      height: 59.99998
     _deletedFlag: 0
