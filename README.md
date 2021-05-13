@@ -37,7 +37,6 @@ Tested in Unity 2020.2.3f1 and 2020.3.8f1.
 
 - create a **Dialogue** [*RMB > Create > DialogueSystem > Dialogue*]
 - create an **Actor** [*RMB > Create > DialogueSystem > Actor*]
-
 - open the **Graph Editor** tool [*Tools > DialogueSystem > Graph Editor*]
 - open the **Node Editor** tool [*Tools > DialogueSystem > Node Editor*]
 
