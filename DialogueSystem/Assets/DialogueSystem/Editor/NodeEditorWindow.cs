@@ -1,74 +1,56 @@
 ﻿using System.Linq;
+using DialogueSystem.Runtime.Data;
 using UnityEditor;
-using UnityEditorInternal;
 using UnityEngine;
 
-namespace DialogueSystem
+namespace DialogueSystem.Editor
 {
     /// <summary>
-    /// Custom node editor window
-    /// Inspector-like, possibly could be changed into just a custom inspector
+    /// Custom Editor Window for Nodes
     /// </summary>
     public class NodeEditorWindow : EditorWindow
     {
         public static NodeEditorWindow Instance => (NodeEditorWindow)GetWindow(typeof(NodeEditorWindow));
-
-        private Node _selectedNode;
-
+        
+        public Node SelectedNode { get; set; }
+        
         private Vector2 _scrollPosition = new Vector2(0, 0);
 
 
         [MenuItem("Tools/DialogueSystem/Node Editor")]
         public static NodeEditorWindow Open()
         {
-            NodeEditorWindow inspectorWindow = (NodeEditorWindow)GetWindow(typeof(NodeEditorWindow));
-            if (inspectorWindow == null)
-            {
-                inspectorWindow = CreateInstance<NodeEditorWindow>();
-            }
+            NodeEditorWindow inspectorWindow = (NodeEditorWindow)GetWindow(typeof(NodeEditorWindow)) 
+                                               ?? CreateInstance<NodeEditorWindow>();
             inspectorWindow.titleContent = new GUIContent("Node Editor");
             return inspectorWindow;
         }
 
-        
-        private void OnEnable()
-        {
-            
-        }
-        
-
-        public void SetNode(Node node)
-        {
-            _selectedNode = node;
-        }
-
-
         private void OnGUI()
         {
-            if (_selectedNode == null)
+            // write only a note if no node selected
+            if (SelectedNode == null)
             {
                 EditorGUILayout.LabelField("Select a node in the Graph Editor");
-
                 return;
             }
-            else
-            {
-                EditorGUILayout.LabelField(_selectedNode.ToString(), EditorStyles.boldLabel);
+            
+            // title label
+            EditorGUILayout.LabelField(SelectedNode.ToString(), EditorStyles.boldLabel);
 
-                _scrollPosition = EditorGUILayout.BeginScrollView(_scrollPosition);
+            // show the sentence content
+            _scrollPosition = EditorGUILayout.BeginScrollView(_scrollPosition);
+            {
+                EditorGUILayout.BeginVertical();
                 {
-                    EditorGUILayout.BeginVertical();
-                    {
-                        //var g = GraphEditorWindow.Instance;
-                        //ShowSentence(g.GetDialogue(), g.GetSelectedID());
-                        ShowSentence(_selectedNode.Sentence);
-                    }
-                    EditorGUILayout.EndVertical();
+                    ShowSentence(SelectedNode.Sentence);
                 }
-                EditorGUILayout.EndScrollView();
+                EditorGUILayout.EndVertical();
             }
+            EditorGUILayout.EndScrollView();
         }
 
+        // draw sentence content - method 1 (dirty)
         private void ShowSentence(Sentence sentence)
         {
             var wordWrap = EditorStyles.textArea.wordWrap;
@@ -110,7 +92,7 @@ namespace DialogueSystem
             EditorGUILayout.LabelField($"Characters: {sentence.Text.Length}", EditorStyles.miniLabel);
 
             // TRIGGERS
-            EditorGUILayout.BeginHorizontal();
+            /*EditorGUILayout.BeginHorizontal();
             GUILayout.Label($"Triggers");
             var triggers = sentence.Triggers;
             int newCount = Mathf.Max(0, EditorGUILayout.IntField(triggers.Count));
@@ -123,7 +105,7 @@ namespace DialogueSystem
                 //triggers[i] = (Trigger)EditorGUILayout.ObjectField(triggers[i], typeof(Trigger), false);
                 triggers[i] = EditorGUILayout.TextField(triggers[i]);
             }
-            EditorGUI.indentLevel--;
+            EditorGUI.indentLevel--;*/
 
             // SPACE
             EditorGUILayout.Space();
@@ -155,11 +137,11 @@ namespace DialogueSystem
                 response.Text = EditorGUILayout.TextArea(response.Text, responseTextStyle, GUILayout.Height(responseTextHeight));
                 EditorGUILayout.LabelField($"Characters: {response.Text.Length}", EditorStyles.miniLabel);
 
-                // REQUISITES
-                EditorGUILayout.BeginHorizontal();
-                GUILayout.Label($"     Conditions");
-                response.Requisites = EditorGUILayout.TextField(response.Requisites);
-                EditorGUILayout.EndHorizontal();
+                // CONDITIONS
+                // EditorGUILayout.BeginHorizontal();
+                // GUILayout.Label($"     Conditions");
+                // response.Requisites = EditorGUILayout.TextField(response.Requisites);
+                // EditorGUILayout.EndHorizontal();
 
                 EditorGUI.indentLevel -= 1;
 
@@ -175,6 +157,7 @@ namespace DialogueSystem
             EditorStyles.textArea.wordWrap = wordWrap;
         }
 
+        // draw sentence content - method 2 (serialized)
         public void ShowSentence(Dialogue dialogue, int index)
         {
             if (index < 0 || dialogue.SentenceCount <= index) return;
@@ -227,7 +210,7 @@ namespace DialogueSystem
             EditorGUILayout.LabelField($"Characters: {sentence.Text.Length}", EditorStyles.miniLabel);
 
             // TRIGGERS
-            EditorGUILayout.PropertyField(sTriggers, true);
+            //EditorGUILayout.PropertyField(sTriggers, true);
 
             // SPACE
             EditorGUILayout.Space();

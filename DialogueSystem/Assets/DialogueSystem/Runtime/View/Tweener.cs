@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace DialogueSystem
+namespace DialogueSystem.Runtime.View
 {
     /// <summary>
     /// Universal tweener for UI panels.

@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using UnityEngine;
 
-namespace DialogueSystem
+namespace DialogueSystem.Runtime.Data
 {
     /// <summary>
     /// This is a single node / sentence in a dialogue.

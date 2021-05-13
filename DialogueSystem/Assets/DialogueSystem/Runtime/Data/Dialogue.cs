@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
-namespace DialogueSystem
+namespace DialogueSystem.Runtime.Data
 {
     /// <summary>
     /// This ScriptableObject represents a dialogue, which is a graph (list of connected sentences).

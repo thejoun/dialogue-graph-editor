@@ -1,6 +1,8 @@
 using DialogueSystem;
 using System.Collections;
 using System.Collections.Generic;
+using DialogueSystem.Runtime.Data;
+using DialogueSystem.Runtime.Logic;
 using UnityEngine;
 
 public class TestDialogue : MonoBehaviour

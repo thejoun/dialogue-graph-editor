@@ -1,8 +1,8 @@
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace DialogueSystem
+namespace DialogueSystem.Runtime.Data
 {
     /// <summary>
     /// This class represents the content of a dialogue node.

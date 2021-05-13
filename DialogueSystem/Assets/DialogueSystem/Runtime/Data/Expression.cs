@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace DialogueSystem
+namespace DialogueSystem.Runtime.Data
 {
     /// <summary>
     /// This class represents a possible expression of an actor.

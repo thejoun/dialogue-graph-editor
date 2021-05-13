@@ -1,30 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using DialogueSystem.Runtime.Data;
 using UnityEditor;
+using UnityEngine;
 
-namespace DialogueSystem
+namespace DialogueSystem.Editor
 {
     /// <summary>
-    /// Custom Inspector of Dialogue assets
+    /// Custom Inspector for Dialogue assets
     /// </summary>
     [CustomEditor(typeof(Dialogue))]
-    public class DialogueEditor : Editor
+    public class DialogueCustomEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
-            // the dialogue that is inspected
+            // serialized objects and properties
             Dialogue dialog = target as Dialogue;
-
-            // serialized properties
             SerializedObject sDialog = new SerializedObject(dialog);
             SerializedProperty sTitle = sDialog.FindProperty("_title");
             SerializedProperty sDefActor = sDialog.FindProperty("_defaultActor");
 
-            // title label
+            // default fields
             EditorGUILayout.PropertyField(sTitle, new GUIContent("Title"));
-
-            // default actor field
             EditorGUILayout.ObjectField(sDefActor, new GUIContent("Default Actor", "Each new sentence automatically inherits this actor."));
 
             // node counters

@@ -1,11 +1,9 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
-namespace DialogueSystem
+namespace DialogueSystem.Runtime.View
 {
     /// <summary>
     /// A helper class that types some text in a UI Text.

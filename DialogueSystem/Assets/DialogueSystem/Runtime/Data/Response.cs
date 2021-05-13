@@ -1,8 +1,7 @@
-﻿using UnityEngine;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using UnityEngine;
 
-namespace DialogueSystem
+namespace DialogueSystem.Runtime.Data
 {
     /// <summary>
     /// This class represents a player's response to a sentence.

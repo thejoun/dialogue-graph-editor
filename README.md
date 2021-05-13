@@ -1,53 +1,47 @@
-# Dialogue System for Unity
+# Dialogue Graph Editor for Unity
 
-Dialogue System is a simple framework for edition and display of dialogues inside Unity. It allows you to:
+Dialogue Graph Editor is a simple tool and dialogue system for Unity that allows you to:
 
-- edit dialogue graphs and data visually
+- edit dialogue graphs visually
+- display the dialogues at runtime
 - create actors with several expressions
-- display the dialogues in a pleasant VN style
-- handle text-based triggers
 - easily move created assets around
 
-Coming soon:
-
-- set conditions for specific responses
-- export dialogues to JSON
-
-<img src="https://github.com/TheJonu/Dialogue-Tool/blob/main/img/screen1.png">
-
-<img src="https://github.com/TheJonu/Dialogue-Tool/blob/main/img/screen2.png">
-
-<img src="https://github.com/TheJonu/Dialogue-Tool/blob/main/img/screen3.png" width="60%">
+<img src="https://github.com/TheJonu/Dialogue-Tool/blob/main/img/screen4.png">
 
 ### Installation
 
-To use the system in your project, download and import *DialogueSystem.unitypackage*. It also contains these dependencies:
+To use the system in your project, download and import *DialogueSystem.unitypackage*.  
+The whole project also contains these dependencies, which are needed to display the dialogues at runtime:
 
-- LeanTween (tested with v2.50) ([link](https://assetstore.unity.com/packages/tools/animation/leantween-3595))
-- TextMeshPro (tested with v3.0.1)
+- LeanTween (tested v2.50) ([link](https://assetstore.unity.com/packages/tools/animation/leantween-3595))
+- TextMeshPro (tested v3.0.1)
 
-The system has been tested in Unity 2020.2.3f1 and higher.
+Tested in Unity 2020.2.3f1 and 2020.3.8f1.
 
 ### Content
 
-- Framework
-    - data - stores info about dialogues, actors
-    - controller - controls the flow of dialogues and handles events
-    - view - displays the dialogue in-game and accepts input
-- Tools
+- Runtime
+    - data - structures for dialogues, nodes, actors
+    - logic - controls the dialogues' flow
+    - view - displays dialogue in-game
+- Editor
     - *Graph Editor* - edit dialogue graphs
     - *Node Editor* - edit sentences and responses
-- Examples 
-    - test scene with a test dialogue
+- Examples
+    - test scene with a sample dialogue
     - basic adjustable UI setup
     - other example assets
 
 ### Where to begin
 
-- create a Dialogue [*RMB > Create > DialogueSystem > Dialogue*]
-- create an Actor [*RMB > Create > DialogueSystem > Actor*]
+- create a **Dialogue** [*RMB > Create > DialogueSystem > Dialogue*]
+- create an **Actor** [*RMB > Create > DialogueSystem > Actor*]
 
-To open the editor tools, you can either hit the *Edit* button in a Dialogue's inspector, or acces them from [*Tools > DialogueSystem*].
+- open the **Graph Editor** tool [*Tools > DialogueSystem > Graph Editor*]
+- open the **Node Editor** tool [*Tools > DialogueSystem > Node Editor*]
+
+You can also open the editor tools by selecting a dialogue and clicking "Edit".
 
 ### How to use the *Graph Editor*
 
@@ -57,3 +51,9 @@ To open the editor tools, you can either hit the *Edit* button in a Dialogue's i
 - *green (+) button* - add a a node
 - *red (-) button* - remove the selected node
 - *reset (R) button* - reset graph position and zoom
+
+### How to test
+
+Open the example scene (*DialogueSystem > Examples > Example Scene*), run and press `T` to start the dialogue.
+
+<img src="https://github.com/TheJonu/Dialogue-Tool/blob/main/img/screen3.png" width="60%">

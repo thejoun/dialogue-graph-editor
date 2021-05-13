@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using DialogueSystem.Runtime.Data;
+using DialogueSystem.Runtime.View;
+using UnityEngine;
 
-namespace DialogueSystem
+namespace DialogueSystem.Runtime.Logic
 {
     /// <summary>
     /// Controls the flow of dialogue.

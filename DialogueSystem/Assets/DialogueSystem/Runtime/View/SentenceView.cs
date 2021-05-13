@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using System;
+using System.Collections.Generic;
+using DialogueSystem.Runtime.Data;
+using DialogueSystem.Runtime.Logic;
 using TMPro;
-using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
-using System.Linq;
+using UnityEngine.UI;
 
-namespace DialogueSystem
+namespace DialogueSystem.Runtime.View
 {
     /// <summary>
     /// View for sentences - main UI panel.

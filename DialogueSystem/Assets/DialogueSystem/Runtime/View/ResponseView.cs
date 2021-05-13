@@ -1,9 +1,10 @@
 ﻿using System;
-using UnityEngine;
-using UnityEngine.EventSystems;
+using DialogueSystem.Runtime.Data;
+using DialogueSystem.Runtime.Logic;
 using TMPro;
+using UnityEngine;
 
-namespace DialogueSystem
+namespace DialogueSystem.Runtime.View
 {
     /// <summary>
     /// View for a response button.
